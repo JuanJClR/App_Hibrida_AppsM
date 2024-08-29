@@ -1,3 +1,28 @@
-#karaoke{
-    background: $fondo_creditos;
-}	
+#karaoke {
+
+    background-color: $fondo_home;
+}
+
+#karaoke img {
+    max-width: 100%; // Asegura que la imagen no exceda el ancho del contenedor
+    height: auto; // Mantiene la proporción de la imagen
+    margin-top: 80px; // Espacio debajo de la imagen
+    margin-bottom: 10px; // Espacio debajo de la imagen
+}
+
+#karaoke h1 {
+    font-size: 2rem; // Tamaño del encabezado
+    margin-bottom: 8px; // Espacio debajo del encabezado
+    color: #000000;
+}
+
+#karaoke p {
+    font-size: $font-size-paragraph; // Tamaño del párrafo
+    margin-bottom: 20px; // Espacio debajo del párrafo
+    
+}
+
+#karaoke a.boton {
+    margin: 10px;
+    background-color: #A40A0A;
+}

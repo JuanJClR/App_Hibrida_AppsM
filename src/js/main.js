@@ -10,9 +10,11 @@ function init() {
     refs["karaoke"] = document.getElementById("karaoke");
     refs["pedido"] = document.getElementById("pedido");
 
+
     btns["btn_reservar"] = document.getElementById("btn_reservar");
     btns["btn_karaoke"] = document.getElementById("btn_karaoke");
     btns["btn_pedido"] = document.getElementById("btn_pedido");
+
 
     asignarEventosMenu();
     asignarVolver();
