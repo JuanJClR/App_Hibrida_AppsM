@@ -1,5 +1,5 @@
 // Fuentes
-$font-primary: Arial, sans-serif; // Fuente principal
+$font-primary: "New Amsterdam", sans-serif; // Fuente principal
 $font-heading: Arial, sans-serif; // Fuente para los encabezados
 
 // Tamaños
@@ -11,9 +11,9 @@ $btn-border-radius: 6px; // Bordes redondeados del botón
 
 // Colores
 $fondo_creditos: DeepSkyBlue;
-$fondo_home: white;
+$fondo_home: whitesmoke;
 $fondo_instrucciones: yellowgreen;
-$fondo_juego: violet;
+$fondo_reserva: whitesmoke;
 $fondo_splash: lightseaGreen;
 $btn-color: Navy;
 $btn-hover-color: DarkSlateBlue; // Color de fondo del botón al pasar el ratón
@@ -34,7 +34,7 @@ body {
     width: 85vw;  // Ajustado para el ancho de la pantalla del Moto G52
     height: 85vh; // Ajustado para la altura de la pantalla del Moto G52
     margin: 0 auto;
-    border: 1px solid violet;
+    //border: 1px solid violet;
     overflow: hidden;
     display: flex;
     flex-direction: column; // Apilar elementos verticalmente
