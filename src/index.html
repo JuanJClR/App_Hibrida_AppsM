@@ -6,16 +6,19 @@
     <title></title>
 	<link rel="stylesheet" href="css/vendor/animate.min.css">
     <link rel="stylesheet" href="css/main.scss">
-	<link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=New+Amsterdam&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Anton&family=Handjet:wght@100..900&family=New+Amsterdam&display=swap" rel="stylesheet">
     <script src="js/main.js"></script>
 </head>
 <body>
+	<header class="app-header">
+		<a href="javascript:void(0);" class="back-arrow">&lt;</a>
+        <h1 class="app-title">Barbarapp</h1>
+    </header>
+
 	<section id="app">
 		<!-- Splash -->
 		<section id="splash">
-			<br>
 			<h1>Cargando...</h1>
-			<img src="http://icons.iconarchive.com/icons/sonya/swarm/128/ivoted-2014-icon.png" alt="">
 		</section>
 		
 		<!-- Home -->
@@ -32,17 +35,20 @@
 
 		<!-- Reservar -->
 		<section id="reservar" class="ocultar">
-			<a href="javascript:void(0);" class="boton volver">&lt;</a>
 			<br>
-			<h1>Reservas</h1>
+			<h1>Reservar</h1>
 			<br>
-			<img src="http://icons.iconarchive.com/icons/sonya/swarm/128/Mona-Lisa-icon.png" alt="">
+			<form class="form-reserva">
+				<input type="text" placeholder="Nombre completo">
+				<input type="datetime" placeholder="Fecha y hora">
+				<input type="number" placeholder="Celular">
+				<input type="number" name="personas" id="personas" placeholder="Personas">
+				<br>
+				<button type="submit">Realizar Reserva</button>
+			</form>
 			<br>
 			<br>
-			<a href="#">Miguel Angel</a>&nbsp;&nbsp;
-			<a href="#">Fernando Botero</a><br><br>
-			<a href="#">Alberto Durero</a>&nbsp;&nbsp;
-			<a href="#">Leonardo da Vinci</a><br><br>
+			<br>
 		</section>
 
 		<!-- karaoke -->

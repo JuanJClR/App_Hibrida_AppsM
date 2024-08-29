@@ -1,5 +1,6 @@
 let refs = [];
 let btns = [];
+let btns_volver = document.querySelectorAll(".back-arrow");
 
 window.onload = init;
 
@@ -25,7 +26,6 @@ function init() {
 }
 
 function asignarVolver() {
-    let btns_volver = document.querySelectorAll(".volver");
     for (let i = 0; i < btns_volver.length; i++) {
         btns_volver[i].addEventListener("click", () => {
             cargarSeccion("home");
@@ -54,4 +54,10 @@ function cargarSeccion(seccion) {
     ocultar();
     refs[seccion].classList.remove("ocultar");
     refs[seccion].classList.add("animate__animated", "animate__fadeIn");
+
+    if (seccion === "home") {
+        backArrow.classList.add("hide-arrow");
+    } else {
+        backArrow.classList.remove("hide-arrow");
+    }
 }

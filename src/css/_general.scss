@@ -1,6 +1,6 @@
 // Fuentes
 $font-primary: "New Amsterdam", sans-serif; // Fuente principal
-$font-heading: Arial, sans-serif; // Fuente para los encabezados
+$font-heading: Anton, sans-serif; // Fuente para los encabezados
 
 // Tamaños
 $font-size-heading: 3.2rem; // Tamaño del encabezado (nombre de la app)
@@ -14,8 +14,8 @@ $fondo_creditos: DeepSkyBlue;
 $fondo_home: whitesmoke;
 $fondo_instrucciones: yellowgreen;
 $fondo_reserva: whitesmoke;
-$fondo_splash: lightseaGreen;
-$btn-color: Navy;
+$fondo_splash: #000000;
+$btn-color: #370808;
 $btn-hover-color: DarkSlateBlue; // Color de fondo del botón al pasar el ratón
 $btn-text-color: white;
 
@@ -23,18 +23,17 @@ $btn-text-color: white;
 body {
     margin: 0;
     padding: 0;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center; // Asegura que el contenido esté centrado
-    height: 100vh;
     font-family: $font-primary; // Aplicar fuente principal
 }
 
 #app {
     width: 85vw;  // Ajustado para el ancho de la pantalla del Moto G52
-    height: 85vh; // Ajustado para la altura de la pantalla del Moto G52
+    height: 92vh; // Ajustado para la altura de la pantalla del Moto G52
     margin: 0 auto;
-    //border: 1px solid violet;
     overflow: hidden;
     display: flex;
     flex-direction: column; // Apilar elementos verticalmente
@@ -88,11 +87,6 @@ p1 {
     transform: scale(1.05);
 }
 
-.volver {
-    margin-left: -70%;
-    line-height: 3rem;
-}
-
 .ocultar {
     display: none;
 }
@@ -112,10 +106,5 @@ p1 {
     .boton {
         padding: 1rem;
         font-size: $font-size-button; // Tamaño del texto del botón
-    }
-
-    .volver {
-        margin-left: -70%;
-        line-height: 3rem;
-    }
+    } 
 }
