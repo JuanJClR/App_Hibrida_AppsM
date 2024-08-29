@@ -1,26 +1,45 @@
+// Fuentes
+$font-primary: Arial, sans-serif; // Fuente principal
+$font-heading: Arial, sans-serif; // Fuente para los encabezados
+
+// Tamaños
+$font-size-heading: 3.2rem; // Tamaño del encabezado (nombre de la app)
+$font-size-paragraph: 1rem; // Tamaño del párrafo (texto de bienvenida)
+$font-size-button: 1rem; // Tamaño del texto del botón
+$btn-padding: 10px; // Padding del botón
+$btn-border-radius: 6px; // Bordes redondeados del botón
+
+// Colores
 $fondo_creditos: DeepSkyBlue;
 $fondo_home: DarkOrange;
 $fondo_instrucciones: yellowgreen;
 $fondo_juego: violet;
 $fondo_splash: lightseaGreen;
 $btn-color: Navy;
-$txt-color: white;
+$btn-hover-color: DarkSlateBlue; // Color de fondo del botón al pasar el ratón
+$btn-text-color: white;
 
+// Estilos Generales
 body {
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
+    justify-content: center; // Asegura que el contenido esté centrado
     height: 100vh;
-    font-family: Arial, sans-serif; // Puedes ajustar la tipografía según prefieras
+    font-family: $font-primary; // Aplicar fuente principal
 }
 
 #app {
     width: 85vw;  // Ajustado para el ancho de la pantalla del Moto G52
     height: 85vh; // Ajustado para la altura de la pantalla del Moto G52
     margin: 0 auto;
-    border: 1px solid magenta;
+    border: 1px solid A5A4A6;
     overflow: hidden;
+    display: flex;
+    flex-direction: column; // Apilar elementos verticalmente
+    align-items: center; // Alinea los elementos al centro horizontalmente
+    justify-content: center; // Alinea los elementos al centro verticalmente
 }
 
 section {
@@ -30,19 +49,48 @@ section {
     margin: 0 auto;
 }
 
+h1 {
+    font-family: $font-heading; // Aplicar fuente para encabezado
+    font-size: $font-size-heading; // Tamaño del encabezado
+    margin: 0;
+}
+
+p {
+    font-family: $font-primary; // Aplicar fuente para párrafo
+    font-size: $font-size-paragraph; // Tamaño del párrafo
+    margin: 0;
+}
+
+p1 {
+    font-family: $font-primary; // Aplicar fuente para párrafo
+    font-size: $font-size-paragraph; // Tamaño del párrafo
+    margin: 0;
+}
+
 .boton {
     background-color: $btn-color;
-    color: $txt-color;
-    padding: 12px;
-    font-size: 1.2rem; // Ajustado para mejor visibilidad
+    color: $btn-text-color;
+    padding: $btn-padding;
+    font-size: $font-size-button; // Tamaño del texto del botón
     text-decoration: none;
-    border-radius: 5px; // Bordes redondeados para un mejor diseño
+    border-radius: $btn-border-radius;
     display: inline-block;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 200px; // Establece un ancho fijo para todos los botones
+    text-align: center; // Alinea el texto al centro
+    margin: 10px; // Espacio alrededor de los botones
+}
+
+.boton:hover {
+    background-color: $btn-hover-color;
+    transform: scale(1.05);
 }
 
 .volver {
-    margin-left: -70%; // Ajustado para centrar mejor en la pantalla
-    line-height: 3rem; // Ajustado para mejor alineación
+    margin-left: -70%;
+    line-height: 3rem;
 }
 
 .ocultar {
@@ -63,7 +111,7 @@ section {
 
     .boton {
         padding: 1rem;
-        font-size: 1.2rem;
+        font-size: $font-size-button; // Tamaño del texto del botón
     }
 
     .volver {
