@@ -11,7 +11,7 @@ $btn-border-radius: 6px; // Bordes redondeados del botón
 
 // Colores
 $fondo_creditos: DeepSkyBlue;
-$fondo_home: DarkOrange;
+$fondo_home: white;
 $fondo_instrucciones: yellowgreen;
 $fondo_juego: violet;
 $fondo_splash: lightseaGreen;
@@ -34,7 +34,7 @@ body {
     width: 85vw;  // Ajustado para el ancho de la pantalla del Moto G52
     height: 85vh; // Ajustado para la altura de la pantalla del Moto G52
     margin: 0 auto;
-    border: 1px solid A5A4A6;
+    border: 1px solid violet;
     overflow: hidden;
     display: flex;
     flex-direction: column; // Apilar elementos verticalmente

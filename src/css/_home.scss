@@ -1,7 +1,7 @@
 
 #home {
 
-    
+    background-color: $fondo_home;
 }
 
 #home img {
@@ -14,7 +14,7 @@
 #home h1 {
     font-size: $font-size-heading; // Tamaño del encabezado
     margin-bottom: 60px; // Espacio debajo del encabezado
-    color: #8C2323;
+    color: #A40A0A;
 }
 
 #home p {
@@ -25,5 +25,5 @@
 
 #home a.boton {
     margin: 1px;
-    background-color: #8C2323;
+    background-color: #A40A0A;
 }
