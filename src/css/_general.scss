@@ -1,41 +1,73 @@
-$fondo_creditos:DeepSkyBlue;
-$fondo_home:DarkOrange;
-$fondo_instrucciones:yellowgreen;
-$fondo_juego:violet;
-$fondo_splash:lightseaGreen;
+$fondo_creditos: DeepSkyBlue;
+$fondo_home: DarkOrange;
+$fondo_instrucciones: yellowgreen;
+$fondo_juego: violet;
+$fondo_splash: lightseaGreen;
 $btn-color: Navy;
 $txt-color: white;
 
-body{
-    margin:0;
+body {
+    margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
     height: 100vh;
+    font-family: Arial, sans-serif; // Puedes ajustar la tipografía según prefieras
 }
-#app{
-    width: 340px;
-    height: 440px;
-    margin:0 auto;
-    border:1px solid magenta;
+
+#app {
+    width: 85vw;  // Ajustado para el ancho de la pantalla del Moto G52
+    height: 85vh; // Ajustado para la altura de la pantalla del Moto G52
+    margin: 0 auto;
+    border: 1px solid magenta;
     overflow: hidden;
 }
-section{
-    width:340px;
-    height:440px;
-    text-align:center;
-    margin:0 auto;
+
+section {
+    width: 100%;  // Ocupa el 100% del contenedor
+    height: 100%; // Ocupa el 100% del contenedor
+    text-align: center;
+    margin: 0 auto;
 }
-.boton{
+
+.boton {
     background-color: $btn-color;
-    color:$txt-color;
-    padding: 10px;
+    color: $txt-color;
+    padding: 12px;
+    font-size: 1.2rem; // Ajustado para mejor visibilidad
     text-decoration: none;
+    border-radius: 5px; // Bordes redondeados para un mejor diseño
+    display: inline-block;
 }
-.volver{
-    margin-left: -300px;
-    line-height: 50px;
+
+.volver {
+    margin-left: -70%; // Ajustado para centrar mejor en la pantalla
+    line-height: 3rem; // Ajustado para mejor alineación
 }
-.ocultar{
+
+.ocultar {
     display: none;
+}
+
+/* Ajustes específicos para la pantalla del Moto G52 */
+@media only screen and (min-device-width: 1080px) and (max-device-width: 2400px) and (orientation: portrait) {
+    #app {
+        width: 85vw;
+        height: 85vh;
+    }
+
+    section {
+        width: 85vw;
+        height: 85vh;
+    }
+
+    .boton {
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .volver {
+        margin-left: -70%;
+        line-height: 3rem;
+    }
 }
