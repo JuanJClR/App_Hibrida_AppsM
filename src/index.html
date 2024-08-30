@@ -11,7 +11,9 @@
 </head>
 <body>
 	<header class="app-header">
-		<a href="javascript:void(0);" class="back-arrow">&lt;</a>
+		<button class="atras" onclick="cargarSeccion('home');" >
+			<a href="javascript:void(0);" class="back-arrow">&lt;</a>
+		</button>
         <h1 class="app-title">Barbarapp</h1>
     </header>
 
@@ -42,9 +44,13 @@
 				<input type="text" placeholder="Nombre completo">
 				<input type="datetime" placeholder="Fecha y hora">
 				<input type="number" placeholder="Celular">
-				<input type="number" name="personas" id="personas" placeholder="Personas">
+				<div class="personas">
+					<button class="btn-cantidad" id="mas">-</button>
+					<input class="cantidad" type="number" id="personas" value="1" min="1" max="10">
+					<button class="btn-cantidad" id="menos">+</button>
+				</div>				
 				<br>
-				<button type="submit">Realizar Reserva</button>
+				<button type="submit" class="boton">Realizar Reserva</button>
 			</form>
 			<br>
 			<br>

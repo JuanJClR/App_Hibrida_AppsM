@@ -14,3 +14,22 @@ input {
     border-radius: 10px;
     margin: 0.5vh;
 }
+
+.cantidad {
+    font-family: $font-primary;
+    font-size: large;
+    width: 10vw;
+    border: 0cap;
+    text-align: center;
+    background: none;
+}
+
+.btn-cantidad {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    width: 10vw;
+}

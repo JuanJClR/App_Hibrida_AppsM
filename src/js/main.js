@@ -54,10 +54,5 @@ function cargarSeccion(seccion) {
     ocultar();
     refs[seccion].classList.remove("ocultar");
     refs[seccion].classList.add("animate__animated", "animate__fadeIn");
-
-    if (seccion === "home") {
-        backArrow.classList.add("hide-arrow");
-    } else {
-        backArrow.classList.remove("hide-arrow");
-    }
 }
+
