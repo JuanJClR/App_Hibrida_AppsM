@@ -11,11 +11,14 @@ function init() {
     refs["karaoke"] = document.getElementById("karaoke");
     refs["pedido"] = document.getElementById("pedido");
     refs["karaoke2"] = document.getElementById("karaoke2");
+    refs["canciones"] = document.getElementById("canciones");
 
     btns["btn_reservar"] = document.getElementById("btn_reservar");
     btns["btn_karaoke"] = document.getElementById("btn_karaoke");
     btns["btn_pedido"] = document.getElementById("btn_pedido");
     btns["btn_karaoke2"] = document.getElementById("btn_karaoke2");
+    btns["btn_canciones"] = document.getElementById("btn_canciones");
+
 
 
     asignarEventosMenu();
@@ -39,6 +42,7 @@ function asignarEventosMenu() {
     btns["btn_karaoke"].addEventListener("click", cambiarSeccion);
     btns["btn_pedido"].addEventListener("click", cambiarSeccion);
     btns["btn_karaoke2"].addEventListener("click", cambiarSeccion);
+    btns["btn_canciones"].addEventListener("click", cambiarSeccion);
 }
 
 function ocultar() {
