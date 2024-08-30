@@ -53,7 +53,6 @@ function ocultar() {
 
 function cambiarSeccion(e) {
     let seccion = e.target.id.split("_")[1];
-    seccionActual = seccion;
     cargarSeccion(seccion);
 }
 
@@ -61,6 +60,7 @@ function cargarSeccion(seccion) {
     ocultar();
     refs[seccion].classList.remove("ocultar");
     refs[seccion].classList.add("animate__animated", "animate__fadeIn");
+    seccionActual = seccion;
 
     if (seccion === "home" || seccion === "splash") {
         refs["atras"].style.display = "none";
@@ -82,6 +82,10 @@ function irAtras() {
     else if (seccionActual === "turno") {
         cargarSeccion("karaoke2");
         seccionActual = "karaoke2";
+    }
+    else if (seccionActual === "carrito") {
+        cargarSeccion("pedido");
+        seccionActual = "pedido";
     }
     else {
         cargarSeccion("home");
@@ -320,8 +324,6 @@ function borrarItem(index) {
     cesta.splice(index, 1);
     actualizarCarrito();
 }
-
-
 
 function realizarPedido() {
     const mesa = document.getElementById('mesa').value;
