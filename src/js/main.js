@@ -1,7 +1,8 @@
 let refs = [];
 let btns = [];
+let reservas = [];
 let pedidos = [];
-//let btns_volver = document.querySelectorAll(".back-arrow");
+let cesta = [];
 
 window.onload = init;
 
@@ -26,20 +27,12 @@ function init() {
 
     asignarEventosMenu();
     mostrarContenido('comida');
-    //asignarVolver();
+    cesta = [];
 
     setTimeout(() => {
         cargarSeccion("home");
     }, 500);
 }
-
-// function asignarVolver() {
-//     for (let i = 0; i < btns_volver.length; i++) {
-//         btns_volver[i].addEventListener("click", () => {
-//             cargarSeccion("home");
-//         });
-//     }
-// }
 
 function asignarEventosMenu() {
     btns["btn_reservar"].addEventListener("click", cambiarSeccion);
@@ -101,6 +94,7 @@ function guardarReserva() {
         cantidadPersonas: cantidadPersonas
     };
     console.log(reserva);
+    reservas.push(reserva);
 
     localStorage.setItem("reserva", JSON.stringify(reserva));
 
@@ -158,8 +152,8 @@ function agregarItem(nombrePlato, desc, precio, inputId) {
             cantidad: cantidad
         };
 
-        pedidos.push(item);
-        console.log(pedidos);
+        cesta.push(item);
+        console.log(cesta);
         cantidadInput.value = 0;
 
         Swal.fire({
