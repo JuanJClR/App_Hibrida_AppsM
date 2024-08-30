@@ -373,3 +373,115 @@ function realizarPedido() {
 
     }
 }
+
+let canciones = []; // Array global para almacenar las canciones
+
+function agregarCancion() {
+    const tituloInput = document.getElementById('titulo');
+    const artistaInput = document.getElementById('artista');
+    
+    const titulo = tituloInput.value.trim();
+    const artista = artistaInput.value.trim();
+
+    if (titulo === "" || artista === "") {
+        Swal.fire({
+            title: 'Error',
+            text: 'Se deben llenar ambos campos.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        });
+    } else {
+        const cancion = {
+            titulo: titulo,
+            artista: artista
+        };
+
+        canciones.push(cancion);
+
+        Swal.fire({
+            title: 'Éxito',
+            text: 'Canción guardada exitosamente.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        }).then(() => {
+            // Limpiar los campos
+            tituloInput.value = "";
+            artistaInput.value = "";
+        });
+    }
+}
+
+// Variable global para el turno
+let turno = false;
+
+
+function verificarTurno() {
+    if (!turno) {
+        // Solicitar turno
+        Swal.fire({
+            title: 'Confirmación',
+            text: '¿Deseas solicitar un turno para el karaoke?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Sí',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                turno = true;
+                Swal.fire({
+                    title: 'Turno solicitado',
+                    text: 'Tu turno ha sido solicitado con éxito.',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar',
+                    customClass: {
+                        confirmButton: 'boton'
+                    }
+                });
+            }
+        });
+    } else {
+        // Ya tiene un turno
+        Swal.fire({
+            title: 'Ya tienes un turno',
+            text: 'Ya has solicitado un turno para el karaoke.',
+            icon: 'info',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        });
+    }
+}
+
+function verificarTurnoParaVer(e) {
+    if (!turno) {
+        Swal.fire({
+            title: 'No has solicitado un turno',
+            text: 'Primero debes solicitar un turno para ver el estado.',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        });
+        // Prevenir la acción predeterminada (navegación)
+        cargarSeccion(karaoke2);
+    } else {
+        Swal.fire({
+            title: 'Estado del turno',
+            text: 'Tu turno para el karaoke está confirmado.',
+            icon: 'info',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        });
+    }
+}
+

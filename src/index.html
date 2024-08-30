@@ -69,27 +69,29 @@
 		</section>
 		
 		<!-- karaoke2 -->
-		<section id="karaoke2"class="ocultar">
+		<section id="karaoke2" class="ocultar">
 			<h1>Disfruta del</h1>
 			<h1>karaoke</h1>
 			<br><br>
 			<br><br>
-			<a href="" class="boton">Solicitar turno</a>
-			<a  href="javascript:void(0);"  id="btn_turno" class="boton">Ver turno</a><br><br>	
+			<a href="javascript:void(0);" class="boton" onclick="verificarTurno()">Solicitar turno</a>
+			<a href="javascript:void(0);" id="btn_turno" class="boton" onclick="verificarTurnoParaVer()">Ver turno</a><br><br>  
 		</section>
 
+
 		<!-- canciones -->
-		<section id="canciones"class="ocultar">
+		<section id="canciones" class="ocultar">
 			<h1>Elige tu canción</h1>
 			<br><br>
 			<br><br>
 			<form class="form-canciones">
-				<input type="text" id="" placeholder="Titulo">
-				<input type="text" id="" placeholder="Artista">		
+				<input type="text" id="titulo" placeholder="Título">
+				<input type="text" id="artista" placeholder="Artista">
 				<br>
-				<button type="button" id="" onclick="" class="boton">Enviar</button>
+				<button type="button" id="btn_enviar" onclick="agregarCancion()" class="boton">Enviar</button>
 			</form>
 		</section>
+
 
 		<!-- Turno -->
 		<section id="turno" class="ocultar">
