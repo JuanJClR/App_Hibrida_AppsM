@@ -99,12 +99,29 @@
 			<br><br>	
 		</section>
 
+		<!-- Carrito -->
+		<section id="carrito" class="ocultar">
+			<h1>Pedido:</h1>
+			<p>Total:</p>
+			<p id="carrito-total">$0</p> 
+			<input type="number" id="mesa" placeholder="Número de mesa" min="1" max="20">
+			<a href="javascript:void(0);" class="boton" onclick="realizarPedido()" >Realizar Pedido</a>
+			<div id="carrito-items"></div> 
+		</section>
+		
+
 		<!-- Pedidos -->
 		<section id="pedido" class="ocultar">
 			<div class="tabs">
 				<button class="tab-button" onclick="mostrarContenido('comida')">Comidas</button>
 				<button class="tab-button" onclick="mostrarContenido('bebida')">Bebidas</button>
-				<button class="btn-cesta" onclick=""><img src="img/cesta.png" alt="cesta" width="30vw" height="30vh"></button>
+				<!-- Botón de carrito -->
+				<!-- Botón de carrito -->
+				<button class="btn-cesta" onclick="actualizarCarrito(); cargarSeccion('carrito');">
+					<img src="img/cesta.png" alt="cesta" width="30vw" height="30vh">
+				</button>
+
+
 			</div>
 			<div id="contenido-comida" class="tab-content">
 				<h2>Menú de Comidas</h2>

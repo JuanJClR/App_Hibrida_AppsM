@@ -17,6 +17,7 @@ function init() {
     refs["canciones"] = document.getElementById("canciones");
     refs["turno"] = document.getElementById("turno");
     refs["atras"] = document.querySelector(".atras");
+    refs["carrito"] = document.getElementById("carrito");
 
     btns["btn_reservar"] = document.getElementById("btn_reservar");
     btns["btn_karaoke"] = document.getElementById("btn_karaoke");
@@ -24,8 +25,7 @@ function init() {
     btns["btn_karaoke2"] = document.getElementById("btn_karaoke2");
     btns["btn_canciones"] = document.getElementById("btn_canciones");
     btns["btn_turno"] = document.getElementById("btn_turno");
-
-
+    btns["btn_carrito"] = document.getElementById("btn_carrito");
 
     asignarEventosMenu();
     mostrarContenido('comida');
@@ -172,26 +172,52 @@ function agregarItem(nombrePlato, desc, precio, inputId) {
     const cantidad = parseInt(cantidadInput.value);
 
     if (cantidad > 0) {
-        const item = {
-            nombre: nombrePlato,
-            descripcion: desc,
-            precio: precio,
-            cantidad: cantidad
-        };
+        // Buscar el item en la cesta por nombre
+        let itemExistente = null;
 
-        cesta.push(item);
-        console.log(cesta);
-        cantidadInput.value = 0;
-
-        Swal.fire({
-            title: '¡Añadido a la cesta!',
-            text: `Has añadido ${cantidad} de ${nombrePlato} a la cesta.`,
-            icon: 'success',
-            confirmButtonText: 'Aceptar',
-            customClass: {
-                confirmButton: 'boton'
+        for (let i = 0; i < cesta.length; i++) {
+            if (cesta[i].nombre === nombrePlato) {
+                itemExistente = cesta[i];
+                break;
             }
-        });
+        }
+
+        if (itemExistente) {
+            // Si el item ya existe, sumar la cantidad
+            itemExistente.cantidad += cantidad;
+            Swal.fire({
+                title: 'Cantidad actualizada',
+                text: `Se han añadido ${cantidad} más a ${nombrePlato} en la cesta.`,
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                customClass: {
+                    confirmButton: 'boton'
+                }
+            });
+        } else {
+            // Si el item no existe, agregarlo a la cesta
+            const item = {
+                nombre: nombrePlato,
+                descripcion: desc,
+                precio: precio,
+                cantidad: cantidad
+            };
+
+            cesta.push(item);
+            Swal.fire({
+                title: '¡Añadido a la cesta!',
+                text: `Has añadido ${cantidad} de ${nombrePlato} a la cesta.`,
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                customClass: {
+                    confirmButton: 'boton'
+                }
+            });
+        }
+
+        cantidadInput.value = 0; // Resetear la cantidad a 0
+        console.log(cesta); // Mostrar la cesta actualizada en la consola
+
     } else {
         Swal.fire({
             title: 'Cantidad inválida',
@@ -202,5 +228,148 @@ function agregarItem(nombrePlato, desc, precio, inputId) {
                 confirmButton: 'boton'
             }
         });
+    }
+}
+
+
+
+function actualizarCarrito() {
+    const carritoItemsDiv = document.getElementById('carrito-items');
+    carritoItemsDiv.innerHTML = ''; // Limpiar el contenido anterior
+
+    let total = 0;
+
+    cesta.forEach((item, index) => {
+        // Crear la estructura HTML según la que has proporcionado
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('menu-item');
+
+        const nombre = document.createElement('h3');
+        nombre.textContent = item.nombre;
+        itemDiv.appendChild(nombre);
+
+        const descripcion = document.createElement('p');
+        descripcion.textContent = item.descripcion;
+        itemDiv.appendChild(descripcion);
+
+        const precio = document.createElement('h3');
+        precio.textContent = `$${item.precio.toLocaleString()}`;
+        itemDiv.appendChild(precio);
+
+        const cantidadDiv = document.createElement('div');
+
+        const restarBtn = document.createElement('button');
+        restarBtn.type = 'button';
+        restarBtn.textContent = '-';
+        restarBtn.classList.add('btn-add-menu');
+        restarBtn.id = `menos_${index}`;
+        restarBtn.onclick = () => restarCantidad(index);
+        cantidadDiv.appendChild(restarBtn);
+
+        const cantidadInput = document.createElement('input');
+        cantidadInput.classList.add('cantidad');
+        cantidadInput.id = `numero_${index}`;
+        cantidadInput.type = 'number';
+        cantidadInput.value = item.cantidad;
+        cantidadInput.min = 1;
+        cantidadInput.max = 10;
+        cantidadDiv.appendChild(cantidadInput);
+
+        const sumarBtn = document.createElement('button');
+        sumarBtn.type = 'button';
+        sumarBtn.textContent = '+';
+        sumarBtn.classList.add('btn-add-menu');
+        sumarBtn.id = `mas_${index}`;
+        sumarBtn.onclick = () => sumarCantidad(index);
+        cantidadDiv.appendChild(sumarBtn);
+
+        itemDiv.appendChild(cantidadDiv);
+
+        // Botón para borrar el item
+        const borrarBtn = document.createElement('button');
+        borrarBtn.classList.add('agregar');
+        borrarBtn.textContent = 'Borrar';
+        borrarBtn.onclick = () => borrarItem(index);
+        itemDiv.appendChild(borrarBtn);
+
+        // Añadir el ítem al contenedor principal
+        carritoItemsDiv.appendChild(itemDiv);
+
+        total += item.precio * item.cantidad;
+                
+    });
+
+    document.getElementById('carrito-total').textContent = `$${total.toLocaleString()}`;
+}
+
+function restarCantidad(index) {
+    if (cesta[index].cantidad > 1) {
+        cesta[index].cantidad--;
+        actualizarCarrito();
+    }
+}
+
+function sumarCantidad(index) {
+    if (cesta[index].cantidad < 10) {
+        cesta[index].cantidad++;
+        actualizarCarrito();
+    }
+}
+
+function borrarItem(index) {
+    cesta.splice(index, 1);
+    actualizarCarrito();
+}
+
+
+
+function realizarPedido() {
+    const mesa = document.getElementById('mesa').value;
+
+    // Validar que el número de mesa no esté vacío, sea un número, y esté entre 1 y 20
+    if (mesa === '' || isNaN(mesa) || mesa < 1 || mesa > 20) {
+        Swal.fire({
+            title: 'Número de mesa inválido',
+            text: 'Por favor, ingrese un número de mesa entre 1 y 20.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        });
+        return; // Detener la ejecución si la validación falla
+    }
+
+    if (cesta.length === 0) {
+        Swal.fire({
+            title: 'No hay productos',
+            text: 'Por favor, agrega productos al carrito antes de realizar el pedido.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        });
+    } else {
+        const pedido = {
+            mesa: mesa,
+            productos: [...cesta], // Copia de la cesta actual
+            total: cesta.reduce((acc, item) => acc + (item.precio * item.cantidad), 0)
+        };
+
+        pedidos.push(pedido);
+        cesta = []; // Vaciar la cesta después de realizar el pedido
+        actualizarCarrito();
+
+        Swal.fire({
+            title: 'Pedido realizado',
+            text: 'Su pedido ha sido enviado a la cocina.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        });
+
     }
 }
