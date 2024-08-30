@@ -72,6 +72,7 @@ p1 {
     color: $btn-text-color;
     padding: $btn-padding;
     font-size: $font-size-button; // Tamaño del texto del botón
+    font-family: $font-primary;
     text-decoration: none;
     border-radius: $btn-border-radius;
     display: inline-block;

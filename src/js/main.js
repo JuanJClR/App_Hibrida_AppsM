@@ -3,7 +3,6 @@ let btns = [];
 let btns_volver = document.querySelectorAll(".back-arrow");
 const minusButton = document.getElementById("menos");
 const plusButton = document.getElementById("mas");
-const input = document.getElementById("personas");
 
 window.onload = init;
 
@@ -14,18 +13,16 @@ function init() {
     refs["karaoke"] = document.getElementById("karaoke");
     refs["pedido"] = document.getElementById("pedido");
 
-
     btns["btn_reservar"] = document.getElementById("btn_reservar");
     btns["btn_karaoke"] = document.getElementById("btn_karaoke");
     btns["btn_pedido"] = document.getElementById("btn_pedido");
-
 
     asignarEventosMenu();
     asignarVolver();
 
     setTimeout(() => {
         cargarSeccion("home");
-    }, 3000);
+    }, 500);
 }
 
 function asignarVolver() {
@@ -60,6 +57,7 @@ function cargarSeccion(seccion) {
 }
 
 function restar() {
+    const input = document.getElementById("personas");
     let value = parseInt(input.value);
     if (value > parseInt(input.min)) {
         value--;
@@ -68,9 +66,15 @@ function restar() {
 }
 
 function sumar() {
+    const input = document.getElementById("personas");
     let value = parseInt(input.value);
     if (value < parseInt(input.max)) {
         value++;
         input.value = value;
     }
 }
+
+document.querySelector('.form-reserva').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert("Reserva realizada");
+});
