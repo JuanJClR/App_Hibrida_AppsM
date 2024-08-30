@@ -23,7 +23,8 @@ $btn-text-color: white;
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 85vh;
+    background-color: whitesmoke;
     display: flex;
     align-items: center;
     justify-content: center; // Asegura que el contenido esté centrado
@@ -32,7 +33,7 @@ body {
 
 #app {
     width: 85vw;  // Ajustado para el ancho de la pantalla del Moto G52
-    height: 92vh; // Ajustado para la altura de la pantalla del Moto G52
+    height: 85vh; // Ajustado para la altura de la pantalla del Moto G52
     margin: 0 auto;
     overflow: hidden;
     display: flex;
