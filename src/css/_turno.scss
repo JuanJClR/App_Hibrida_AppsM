@@ -1,0 +1,29 @@
+
+#turno {
+    background-color: $fondo_home;
+}
+
+#turno img {
+    max-width: 100%; // Asegura que la imagen no exceda el ancho del contenedor
+    height: auto; // Mantiene la proporción de la imagen
+    margin-top: 80px; // Espacio debajo de la imagen
+    margin-bottom: 1px; // Espacio debajo de la imagen
+}
+
+#turno h1 {
+    font-size: 2rem; // Tamaño del encabezado
+    margin-bottom: 10px; // Espacio debajo del encabezado
+    color: #370808;
+}
+
+#turno p {
+    font-size: 20rem; // Tamaño del párrafo
+    margin-bottom: 5px; // Espacio debajo del párrafo
+    margin-top: 1px; // Espacio debajo del párrafo
+    
+}
+
+#turno a.boton {
+    margin: 1px;
+    background-color: #370808;
+}
