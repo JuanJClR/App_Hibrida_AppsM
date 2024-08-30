@@ -3,6 +3,7 @@ let btns = [];
 let reservas = [];
 let pedidos = [];
 let cesta = [];
+let seccionActual = "";
 
 window.onload = init;
 
@@ -15,6 +16,7 @@ function init() {
     refs["karaoke2"] = document.getElementById("karaoke2");
     refs["canciones"] = document.getElementById("canciones");
     refs["turno"] = document.getElementById("turno");
+    refs["atras"] = document.querySelector(".atras");
 
     btns["btn_reservar"] = document.getElementById("btn_reservar");
     btns["btn_karaoke"] = document.getElementById("btn_karaoke");
@@ -51,6 +53,7 @@ function ocultar() {
 
 function cambiarSeccion(e) {
     let seccion = e.target.id.split("_")[1];
+    seccionActual = seccion;
     cargarSeccion(seccion);
 }
 
@@ -58,6 +61,31 @@ function cargarSeccion(seccion) {
     ocultar();
     refs[seccion].classList.remove("ocultar");
     refs[seccion].classList.add("animate__animated", "animate__fadeIn");
+
+    if (seccion === "home" || seccion === "splash") {
+        refs["atras"].style.display = "none";
+    } else {
+        refs["atras"].style.display = "block";
+    }
+}
+
+function irAtras() {
+    console.log(seccionActual);
+    if (seccionActual === "karaoke2") {
+        cargarSeccion("karaoke");
+        seccionActual = "karaoke";
+    }
+    else if (seccionActual === "canciones") {
+        cargarSeccion("karaoke");
+        seccionActual = "karaoke";
+    }
+    else if (seccionActual === "turno") {
+        cargarSeccion("karaoke2");
+        seccionActual = "karaoke2";
+    }
+    else {
+        cargarSeccion("home");
+    }
 }
 
 function restar(inputId) {
@@ -77,7 +105,6 @@ function sumar(inputId) {
         input.value = value;
     }
 }
-
 
 function guardarReserva() {
     const nombre = document.getElementById("nombre_completo").value;
