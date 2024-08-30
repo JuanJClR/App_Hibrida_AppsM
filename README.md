@@ -1,10 +1,17 @@
-# Protecto base para aplicación híbrida
+# BARBARAPP
 
-Esta es una plantilla base para crear una aplicación SPA (Single Page Application), para probar el proyecto, seguir los siguientes pasos:
+Barbarapp es una aplicación web que permite a los usuarios realizar reservas en el establecimiento, disfrutar de una experiencia de karaoke, realizar pedidos de comida y bebidas. Esta aplicación está desarrollada con HTML, JavaScript y SCSS, y utiliza Parcel como bundler para optimizar los recursos.
 
-- Clonar el repositorio
-- Ingresar a la carpeta del repositorio clonado
-- Instalar las dependencias con el comando npm i
-- Ejecutar el proyecto de manera local npm run local
-- Para ver el proyecto para producción npm run build
-- Ingresar a la url que aparece en la terminal desde el navegador
+### Para correrlo
+
+Clona el reposiotio e instala sus dependencias:
+
+```
+npm install
+```
+
+Inicia el servidor en el puerto 1234.
+
+```
+npm start
+```
