@@ -1,6 +1,9 @@
 let refs = [];
 let btns = [];
 let btns_volver = document.querySelectorAll(".back-arrow");
+const minusButton = document.getElementById("menos");
+const plusButton = document.getElementById("mas");
+const input = document.getElementById("personas");
 
 window.onload = init;
 
@@ -56,3 +59,18 @@ function cargarSeccion(seccion) {
     refs[seccion].classList.add("animate__animated", "animate__fadeIn");
 }
 
+function restar() {
+    let value = parseInt(input.value);
+    if (value > parseInt(input.min)) {
+        value--;
+        input.value = value;
+    }
+}
+
+function sumar() {
+    let value = parseInt(input.value);
+    if (value < parseInt(input.max)) {
+        value++;
+        input.value = value;
+    }
+}

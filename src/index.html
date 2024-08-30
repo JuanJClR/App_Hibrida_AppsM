@@ -20,7 +20,15 @@
 	<section id="app">
 		<!-- Splash -->
 		<section id="splash">
-			<h1>Cargando...</h1>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<img src="img/time.png" alt="cargando..." height="100vh" width="100vw">
 		</section>
 		
 		<!-- Home -->
@@ -38,6 +46,13 @@
 		<!-- Reservar -->
 		<section id="reservar" class="ocultar">
 			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 			<h1>Reservar</h1>
 			<br>
 			<form class="form-reserva">
@@ -45,9 +60,9 @@
 				<input type="datetime" placeholder="Fecha y hora">
 				<input type="number" placeholder="Celular">
 				<div class="personas">
-					<button class="btn-cantidad" id="mas">-</button>
+					<button type="button" onclick="restar()" class="btn-cantidad" id="mas">-</button>
 					<input class="cantidad" type="number" id="personas" value="1" min="1" max="10">
-					<button class="btn-cantidad" id="menos">+</button>
+					<button type="button" onclick="sumar()" class="btn-cantidad" id="menos">+</button>
 				</div>				
 				<br>
 				<button type="submit" class="boton">Realizar Reserva</button>
