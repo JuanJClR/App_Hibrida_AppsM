@@ -1,5 +1,6 @@
 let refs = [];
 let btns = [];
+let pedidos = [];
 //let btns_volver = document.querySelectorAll(".back-arrow");
 
 window.onload = init;
@@ -24,6 +25,7 @@ function init() {
 
 
     asignarEventosMenu();
+    mostrarContenido('comida');
     //asignarVolver();
 
     setTimeout(() => {
@@ -65,8 +67,8 @@ function cargarSeccion(seccion) {
     refs[seccion].classList.add("animate__animated", "animate__fadeIn");
 }
 
-function restar() {
-    const input = document.getElementById("numero_personas");
+function restar(inputId) {
+    const input = document.getElementById(inputId);
     let value = parseInt(input.value);
     if (value > parseInt(input.min)) {
         value--;
@@ -74,8 +76,8 @@ function restar() {
     }
 }
 
-function sumar() {
-    const input = document.getElementById("numero_personas");
+function sumar(inputId) {
+    const input = document.getElementById(inputId);
     let value = parseInt(input.value);
     if (value < parseInt(input.max)) {
         value++;
@@ -111,11 +113,73 @@ function guardarReserva() {
             confirmButton: 'boton'
         }
     });
-    
+
     document.getElementById("nombre_completo").value = "";
     document.getElementById("fecha").value = "";
     document.getElementById("hora").value = "";
     document.getElementById("celular").value = "";
     document.getElementById("numero_personas").value = 1;
     cargarSeccion("home");
+}
+
+function mostrarContenido(tipo) {
+    const contenidos = document.querySelectorAll('.tab-content');
+    contenidos.forEach(contenido => {
+        contenido.classList.add('ocultar');
+        contenido.classList.remove('mostrar');
+    });
+
+    const botones = document.querySelectorAll('.tab-button');
+    botones.forEach(boton => {
+        boton.classList.remove('active');
+    });
+
+    const contenidoSeleccionado = document.getElementById(`contenido-${tipo}`);
+    if (contenidoSeleccionado) {
+        contenidoSeleccionado.classList.remove('ocultar');
+        contenidoSeleccionado.classList.add('mostrar');
+    }
+    
+    const botonSeleccionado = Array.from(botones).find(boton => boton.textContent.toLowerCase() === tipo);
+    if (botonSeleccionado) {
+        botonSeleccionado.classList.add('active');
+    }
+}
+
+function agregarItem(nombrePlato, desc, precio, inputId) {
+    const cantidadInput = document.getElementById(inputId);
+    const cantidad = parseInt(cantidadInput.value);
+
+    if (cantidad > 0) {
+        const item = {
+            nombre: nombrePlato,
+            descripcion: desc,
+            precio: precio,
+            cantidad: cantidad
+        };
+
+        pedidos.push(item);
+        console.log(pedidos);
+        cantidadInput.value = 0;
+
+        Swal.fire({
+            title: '¡Añadido a la cesta!',
+            text: `Has añadido ${cantidad} de ${nombrePlato} a la cesta.`,
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        });
+    } else {
+        Swal.fire({
+            title: 'Cantidad inválida',
+            text: 'Por favor, selecciona una cantidad mayor a 0.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        });
+    }
 }
