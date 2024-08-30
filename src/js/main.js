@@ -1,8 +1,6 @@
 let refs = [];
 let btns = [];
-let btns_volver = document.querySelectorAll(".back-arrow");
-const minusButton = document.getElementById("menos");
-const plusButton = document.getElementById("mas");
+//let btns_volver = document.querySelectorAll(".back-arrow");
 
 window.onload = init;
 
@@ -18,20 +16,20 @@ function init() {
     btns["btn_pedido"] = document.getElementById("btn_pedido");
 
     asignarEventosMenu();
-    asignarVolver();
+    //asignarVolver();
 
     setTimeout(() => {
         cargarSeccion("home");
     }, 500);
 }
 
-function asignarVolver() {
-    for (let i = 0; i < btns_volver.length; i++) {
-        btns_volver[i].addEventListener("click", () => {
-            cargarSeccion("home");
-        });
-    }
-}
+// function asignarVolver() {
+//     for (let i = 0; i < btns_volver.length; i++) {
+//         btns_volver[i].addEventListener("click", () => {
+//             cargarSeccion("home");
+//         });
+//     }
+// }
 
 function asignarEventosMenu() {
     btns["btn_reservar"].addEventListener("click", cambiarSeccion);
@@ -57,7 +55,7 @@ function cargarSeccion(seccion) {
 }
 
 function restar() {
-    const input = document.getElementById("personas");
+    const input = document.getElementById("numero_personas");
     let value = parseInt(input.value);
     if (value > parseInt(input.min)) {
         value--;
@@ -66,7 +64,7 @@ function restar() {
 }
 
 function sumar() {
-    const input = document.getElementById("personas");
+    const input = document.getElementById("numero_personas");
     let value = parseInt(input.value);
     if (value < parseInt(input.max)) {
         value++;
@@ -74,7 +72,39 @@ function sumar() {
     }
 }
 
-document.querySelector('.form-reserva').addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert("Reserva realizada");
-});
+
+function guardarReserva() {
+    const nombre = document.getElementById("nombre_completo").value;
+    const fecha = document.getElementById("fecha").value;
+    const hora = document.getElementById("hora").value;
+    const celular = document.getElementById("celular").value;
+    const cantidadPersonas = document.getElementById("numero_personas").value;
+
+    const reserva = {
+        nombre: nombre,
+        fecha: fecha,
+        hora: hora,
+        celular: celular,
+        cantidadPersonas: cantidadPersonas
+    };
+    console.log(reserva);
+
+    localStorage.setItem("reserva", JSON.stringify(reserva));
+
+    Swal.fire({
+        title: '¡Reserva guardada!',
+        text: 'Tu reserva se ha guardado con éxito.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        customClass: {
+            confirmButton: 'boton'
+        }
+    });
+    
+    document.getElementById("nombre_completo").value = "";
+    document.getElementById("fecha").value = "";
+    document.getElementById("hora").value = "";
+    document.getElementById("celular").value = "";
+    document.getElementById("numero_personas").value = 1;
+    cargarSeccion("home");
+}
