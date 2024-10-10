@@ -415,10 +415,12 @@ function realizarPedido() {
             customClass: {
                 confirmButton: 'boton'
             }
+        }).then(() => {
+            cargarSeccion('home'); // Cambiar a la sección de home
         });
-
     }
 }
+
 
 let canciones = []; // Array global para almacenar las canciones
 
