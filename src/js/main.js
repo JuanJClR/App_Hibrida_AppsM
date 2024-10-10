@@ -4,8 +4,53 @@ let reservas = [];
 let pedidos = [];
 let cesta = [];
 let seccionActual = "";
+let edadVerificada = false; // Nueva variable para controlar si la edad ya ha sido verificada
 
-window.onload = init;
+window.onload = function() {
+    init();
+};
+
+function verificarEdad() {
+    if (edadVerificada) return; // Si ya se verificó la edad, no mostrar el modal de nuevo
+
+    Swal.fire({
+        title: 'Verificación de edad',
+        text: '¿Eres mayor de 18 años?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sí',
+        cancelButtonText: 'No',
+        customClass: {
+            confirmButton: 'boton',
+            cancelButton: 'boton'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            edadVerificada = true; // Marcar la edad como verificada
+            Swal.fire({
+                title: 'Acceso permitido',
+                text: 'Bienvenido al karaoke.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                customClass: {
+                    confirmButton: 'boton'
+                }
+            });
+        } else {
+            Swal.fire({
+                title: 'Acceso denegado',
+                text: 'Debes ser mayor de 18 años para acceder.',
+                icon: 'error',
+                confirmButtonText: 'Entendido',
+                customClass: {
+                    confirmButton: 'boton'
+                }
+            }).then(() => {
+                window.location.href = 'https://www.google.com'; // Redirigir a otra página
+            });
+        }
+    });
+}
 
 function init() {
     refs["splash"] = document.getElementById("splash");
@@ -32,7 +77,7 @@ function init() {
     cesta = [];
 
     setTimeout(() => {
-        cargarSeccion("home");
+        cargarSeccion("home"); // Cambia la sección a "home"
     }, 500);
 }
 
@@ -64,6 +109,9 @@ function cargarSeccion(seccion) {
 
     if (seccion === "home" || seccion === "splash") {
         refs["atras"].style.display = "none";
+        if (!edadVerificada) { // Solo verificar la edad si aún no se ha hecho
+            verificarEdad();
+        }
     } else {
         refs["atras"].style.display = "block";
     }
@@ -74,20 +122,16 @@ function irAtras() {
     if (seccionActual === "karaoke2") {
         cargarSeccion("karaoke");
         seccionActual = "karaoke";
-    }
-    else if (seccionActual === "canciones") {
+    } else if (seccionActual === "canciones") {
         cargarSeccion("karaoke");
         seccionActual = "karaoke";
-    }
-    else if (seccionActual === "turno") {
+    } else if (seccionActual === "turno") {
         cargarSeccion("karaoke2");
         seccionActual = "karaoke2";
-    }
-    else if (seccionActual === "carrito") {
+    } else if (seccionActual === "carrito") {
         cargarSeccion("pedido");
         seccionActual = "pedido";
-    }
-    else {
+    } else {
         cargarSeccion("home");
     }
 }
