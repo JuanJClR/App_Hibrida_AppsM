@@ -155,11 +155,25 @@ function sumar(inputId) {
 }
 
 function guardarReserva() {
-    const nombre = document.getElementById("nombre_completo").value;
+    const nombre = document.getElementById("nombre_completo").value.trim();
     const fecha = document.getElementById("fecha").value;
     const hora = document.getElementById("hora").value;
-    const celular = document.getElementById("celular").value;
+    const celular = document.getElementById("celular").value.trim();
     const cantidadPersonas = document.getElementById("numero_personas").value;
+
+    // Verificar si algún campo está vacío
+    if (!nombre || !fecha || !hora || !celular || !cantidadPersonas) {
+        Swal.fire({
+            title: 'Error',
+            text: 'Por favor, completa todos los campos.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'boton'
+            }
+        });
+        return; // Detener la ejecución si hay campos vacíos
+    }
 
     const reserva = {
         nombre: nombre,
@@ -183,13 +197,16 @@ function guardarReserva() {
         }
     });
 
+    // Limpiar el formulario
     document.getElementById("nombre_completo").value = "";
     document.getElementById("fecha").value = "";
     document.getElementById("hora").value = "";
     document.getElementById("celular").value = "";
     document.getElementById("numero_personas").value = 1;
+
     cargarSeccion("home");
 }
+
 
 function mostrarContenido(tipo) {
     const contenidos = document.querySelectorAll('.tab-content');
